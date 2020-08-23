@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <title>NodeJs Chat Application</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            function copyUrl() {
+              var copyText = document.getElementById("setUrl");
+              copyText.setAttribute('readonly', 'true');
+              copyText.select();
+              document.execCommand("copy");
+              alert("Copied the text: " + copyText.value);
+            }
+        </script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+        <style>
+      .chat_bg{
+        background-color: gray;
+      }
+
+
+.room_head h5{ font-size:15px;}
+.room_head h5 span{ font-size:13px}
+.room_head p{ font-size:14px}
+
+
+.chat_people{ overflow:hidden; clear:both;}
+
+.inbox_chat { height: 500px; overflow-y: scroll;}
+
+
+ .in_msgs p {
+  background: #ebebeb none repeat scroll 0 0;
+  border-radius: 3px;
+  color: #646464;
+  font-size: 14px;
+  margin: 0;
+  padding: 5px 10px 5px 12px;
+  width: 100%;
+}
+.time_date {
+  color: #747474;
+  display: block;
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+.in_msgs { width: 57%;}
+
+
+.input_msg input {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: white;
+
+  width: 100%;
+}
+
+.textMsgArea {border-top: 1px solid #c4c4c4;position: relative;}
+.msg_send_btn {
+  background: #05728f none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  position: absolute;
+  right: 0;
+  top: 11px;
+  width: 33px;
+}
+.messaging { padding: 0 0 50px 0;}
+.chat_messages_container {
+  height: 516px;
+  overflow-y: auto;
+}
+
+#setUrl{
+  width: 80%;
+}
+        </style>
+    </head>
+
+    <body class="chat_bg">
+      <div class="container-fluid">
+            <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-3 shadow">
+                <a  id="welcome_head" class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Chat App</a>
+                <ul class="navbar-nav px-3">
+                  <li class="nav-item text-nowrap">
+                    <a class="nav-link" href="/index.html">Sign out</a>
+                  </li>
+
+                </ul>
+            </nav>
+      </div>
+
+    <div class="container mt-2 text-light">
+        <div>
+            <div class="row inbox_msg border">
+                <div class="col-md-4 border-right mt-4">
+                    <div class="headind_srch">
+                        <p class="notify text-warning">  Notifications </p>
+                       
+                        <div class="recent_heading">
+                            <h4>Online Members</h4>
+                        </div>
+                    </div>
+                    <div class="inbox_chat">
+                        <div class="active_chat">
+                            <div class="chat_people">
+                                <div class="room_head">
+                                    <h5 class="active-users "></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+                <div class="col-md-8 mt-4">
+                                
+                                    <div  class="chat_messages_container">
+                                        <div class="chat_messages in_msgs">
+                                          <!-- chat messages -->
+                                        </div>
+                                    </div>
+                                  
+
+                        <div class="textMsgArea medium ">
+                            <div class="input_msg">
+                                <form id="chat-form">
+                                    <div class="form">
+                                        <input type="text" placeholder="Type a message" id="chatText" autocomplete="off"/>
+                                        <button type="submit" class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                       
+                    </div>
+                </div>
+                <div class="col-md-12 share-url mt-4"></div>
+            </div><!-- Inbox msg-->
+            
+
+            
+        </div><!-- messaging end-->
+        
+    </div>
+   
+      
+      </div>
+   
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w==" crossorigin="anonymous"></script>
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="/js/main.js"></script>
+      
+  
+    </body>
+</html>
